@@ -14,6 +14,8 @@
 
 + (DBManager *)sharedInstance;
 
+@property (nonatomic, strong) FMDatabase *db;
+
 - (void)initDBManager;
 - (BOOL)beginTransaction;
 - (void)commitTransaction;
@@ -23,6 +25,7 @@
 - (BOOL)updateMemo:(Memo *)memo;
 
 - (NSMutableArray *)Memo;
+
 
 
 

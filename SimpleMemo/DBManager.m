@@ -10,8 +10,6 @@
 
 @interface DBManager()
 
-@property (nonatomic, strong) FMDatabase *db;
-
 @end
 
 @implementation DBManager
@@ -19,7 +17,7 @@
 static id _instance = nil;
 
 + (DBManager *)sharedInstance{
-    NSLog(@"called shardInstance");
+
     @synchronized(self) {
         if (!_instance) {
             _instance = [[self alloc] init];
@@ -30,7 +28,6 @@ static id _instance = nil;
 }
 
 - (void)initDBManager{
-    NSLog(@"called initDBManager");
 
     NSFileManager *fm = [NSFileManager defaultManager];
     NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -116,14 +113,12 @@ static id _instance = nil;
 - (BOOL)insertMemo:(Memo *)memo withId:(BOOL)setId{
     LOG_METHOD;
     if(![self open]) return NO;
-    NSLog(@"called insertMemo");
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY/MM/dd HH:mm:ss"];
     NSDate* date = [NSDate date];
     NSString* dateStr = [formatter stringFromDate:date];
-    NSLog(@"あれーーー");
-    NSLog(@"Date:%@",dateStr);
+    //NSLog(@"Date:%@",dateStr);
     
     if(setId){
         [self.db executeUpdate:@"INSERT INTO memo (id, title, content, created_at, updated_at) VALUES(?, ?, ?, ?, ?)",
@@ -200,7 +195,7 @@ static id _instance = nil;
 
 - (BOOL)updateMemo:(Memo *)memo{
     LOG_METHOD;
-	if(![self open]) return nil;
+//	if(![self open]) return nil;
     
     return NO;
     

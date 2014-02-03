@@ -18,11 +18,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"start_load");
+
     Memo *memoObject = Memo.new;
     memoObject.title = @"いいい";
-    
-    NSLog(@"%@", memoObject.title);
     DBManager *db = [DBManager sharedInstance];
     [db insertMemo: memoObject];
     

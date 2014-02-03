@@ -7,15 +7,31 @@
 //
 
 #import "AppDelegate.h"
+#import "MasterViewController.h"
 
 @implementation AppDelegate
+@synthesize window = _window;
+@synthesize navigationController = _navigationController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc]
+                   initWithFrame:[[UIScreen mainScreen] bounds]];
+    MasterViewController *masterViewController;
+    masterViewController = [[MasterViewController alloc]
+                            initWithStyle:UITableViewStylePlain];
+    
+    self.navigationController = [[UINavigationController alloc]
+                                 initWithRootViewController:masterViewController];
+    self.window.rootViewController = self.navigationController;
+    UIColor* color = [UIColor colorWithRed:0.855 green:0.647 blue:0.125 alpha:1.0];
+    self.window.tintColor = color;
+    
+    [self.window makeKeyAndVisible];
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
