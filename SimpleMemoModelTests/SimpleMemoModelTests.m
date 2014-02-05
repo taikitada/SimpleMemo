@@ -33,18 +33,33 @@
 - (void)testExample
 {
     DBManager *db = [DBManager sharedInstance];
-    Memo *memoObject = Memo.new;
-    memoObject.title = @"いいい";
-    NSLog(@"%@", memoObject.title);
-    [db insertMemo: memoObject];
-    NSArray *memo = [[DBManager sharedInstance] Memo];
+    [db deleteDB];
+    Memo *memoInstance = Memo.new;
+    memoInstance.title = @"タイトル";
+    memoInstance.content = @"内容です。";
+    [db insertMemo: memoInstance];
+    memoInstance.title = @"タイトル1";
+    memoInstance.content = @"内容2です。";
+    [db insertMemo: memoInstance];
+    
+    NSArray *memo = [db Memo];
+    int count = 0;
     for (Memo *e in memo) {
 		NSLog(@">> %d", e.MemoId);
-        XCTAssertEqualObjects(e.title, @"いいい", @"check set title");
+        if(count==0){
+        XCTAssertEqualObjects(e.title, @"タイトル", @"check set title");
+        }else{
+        XCTAssertEqualObjects(e.title, @"タイトル1", @"check set title");
+        }
         NSLog(@">> %@", e.title);
         NSLog(@">> %@", e.created_at);
         NSLog(@">> %@", e.updated_at);
-	}
+        count++;
+    }
+    NSMutableArray *titles = [db MemoTitles];
+    for (NSString *title in titles) {
+        NSLog(@"%@",title);
+    };
     //XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
 }
 

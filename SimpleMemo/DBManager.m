@@ -40,6 +40,8 @@ static id _instance = nil;
         needInitData = YES;
     }
     [self setDb:[FMDatabase databaseWithPath:dbPath]];
+    [self open];
+    self.titleArray = [self MemoTitles];
     
     [self alterTable];
     if(needInitData){
@@ -106,7 +108,6 @@ static id _instance = nil;
 }
 
 - (BOOL)insertMemo:(Memo *)memo{
-    NSLog(@"called insertMemo");
     return [self insertMemo:memo withId:NO];
 }
 
@@ -158,24 +159,12 @@ static id _instance = nil;
     @autoreleasepool {
         while ([rs next]) {
             
-            
             Memo *memo = [[Memo alloc] init];
             memo.MemoId = [rs intForColumn:@"id"];
-            NSLog(@"%d", memo.MemoId);
-            NSString *title = [rs stringForColumn:@"title"];
-            NSLog(@"%@",title);
-            NSString *updated_at = [rs stringForColumn:@"updated_at"];
-            NSLog(@"%@",updated_at);
-            memo.updated_at = updated_at;
-            NSString *created_at = [rs stringForColumn:@"created_at"];
-            NSLog(@"%@",created_at);
+            memo.title = [rs stringForColumn:@"title"];
+            memo.updated_at = [rs stringForColumn:@"updated_at"];
+            memo.created_at = [rs stringForColumn:@"created_at"];
             
-            
-            if([title rangeOfString:@"POCKET_"].location != NSNotFound){
-                memo.title = LS(title);
-            }else{
-                memo.title = title;
-            }
             [data addObject:memo];
         }
     }
@@ -188,8 +177,37 @@ static id _instance = nil;
 	return nil;
 }
 
+- (NSMutableArray *)MemoTitles{
+    if(![self open]) return nil;
+    NSMutableArray *titles = [[NSMutableArray alloc] initWithCapacity:0];
+    FMResultSet *rs = [self.db executeQuery:@"\
+                       SELECT id, title, content, created_at, updated_at \
+                       FROM memo \
+                       ORDER BY updated_at ASC, id ASC\
+                       "];
+    @autoreleasepool {
+        while ([rs next]) {
+            NSString *title = [rs stringForColumn:@"title"];
+            [titles addObject: title];
+        }
+    }
+    
+    return titles;
+}
+
 - (BOOL)deleteMemo:(Memo *)memo{
+    if(![self open]) return nil;
+    [self.db executeUpdate:@"DELETE FROM memo"];
+    [self.db close];
+    
     return NO;
+    
+}
+
+- (void)deleteDB{
+    if(![self open]) NSLog(@"Can't Open Database");
+    [self.db executeUpdate:@"DELETE FROM memo"];
+    [self.db close];
     
 }
 
@@ -200,6 +218,8 @@ static id _instance = nil;
     return NO;
     
 }
+
+
 
 
 

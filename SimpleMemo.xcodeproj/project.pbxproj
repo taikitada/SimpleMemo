@@ -30,7 +30,6 @@
 		168D622E1892AFE900C32C53 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 168D62291892AFE900C32C53 /* FMResultSet.m */; };
 		168D62311892C23000C32C53 /* Memo.m in Sources */ = {isa = PBXBuildFile; fileRef = 168D62301892C23000C32C53 /* Memo.m */; };
 		168D62341893852200C32C53 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D62331893852200C32C53 /* libsqlite3.dylib */; };
-		168D62361893A0BC00C32C53 /* data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 168D62351893A0BC00C32C53 /* data.sqlite */; };
 		74B39BA3189E405A00AFC789 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D62031892A98100C32C53 /* XCTest.framework */; };
 		74B39BA4189E405A00AFC789 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D61E11892A98100C32C53 /* Foundation.framework */; };
 		74B39BA5189E405A00AFC789 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D61E51892A98100C32C53 /* UIKit.framework */; };
@@ -39,7 +38,7 @@
 		74B39BB6189FD58900AFC789 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B39BB5189FD58900AFC789 /* MasterViewController.m */; };
 		74B39BBC189FD87C00AFC789 /* TextAreaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B39BBB189FD87C00AFC789 /* TextAreaCell.m */; };
 		74B39BBF189FE3E500AFC789 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B39BBE189FE3E500AFC789 /* ContentViewController.m */; };
-		74B39C0A18A061A800AFC789 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B39C0918A061A800AFC789 /* Icon.png */; };
+		74B39C0D18A1207000AFC789 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B39C0C18A1207000AFC789 /* Icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +95,7 @@
 		168D622F1892C23000C32C53 /* Memo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Memo.h; sourceTree = "<group>"; };
 		168D62301892C23000C32C53 /* Memo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Memo.m; sourceTree = "<group>"; };
 		168D62331893852200C32C53 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		168D62351893A0BC00C32C53 /* data.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = data.sqlite; path = SimpleMemo/data.sqlite; sourceTree = "<group>"; };
+		74108CB818A1329F00CDDB39 /* data.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = data.sqlite; sourceTree = "<group>"; };
 		74B39BA2189E405A00AFC789 /* SimpleMemoModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleMemoModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B39BA8189E405A00AFC789 /* SimpleMemoModelTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SimpleMemoModelTests-Info.plist"; sourceTree = "<group>"; };
 		74B39BAA189E405A00AFC789 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -108,7 +107,7 @@
 		74B39BBB189FD87C00AFC789 /* TextAreaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextAreaCell.m; sourceTree = "<group>"; };
 		74B39BBD189FE3E500AFC789 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
 		74B39BBE189FE3E500AFC789 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
-		74B39C0918A061A800AFC789 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		74B39C0C18A1207000AFC789 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,8 +148,8 @@
 		168D61D51892A98100C32C53 = {
 			isa = PBXGroup;
 			children = (
+				74108CB818A1329F00CDDB39 /* data.sqlite */,
 				74B39C0B18A061E100AFC789 /* Images */,
-				168D62351893A0BC00C32C53 /* data.sqlite */,
 				168D61E71892A98100C32C53 /* SimpleMemo */,
 				168D62091892A98100C32C53 /* SimpleMemoTests */,
 				74B39BA6189E405A00AFC789 /* SimpleMemoModelTests */,
@@ -199,9 +198,9 @@
 				74B39BBA189FD87C00AFC789 /* TextAreaCell.h */,
 				74B39BBB189FD87C00AFC789 /* TextAreaCell.m */,
 				168D62191892ADF000C32C53 /* DBManager.h */,
+				168D621A1892ADF000C32C53 /* DBManager.m */,
 				168D622F1892C23000C32C53 /* Memo.h */,
 				168D62301892C23000C32C53 /* Memo.m */,
-				168D621A1892ADF000C32C53 /* DBManager.m */,
 				168D61FC1892A98100C32C53 /* Images.xcassets */,
 				168D61E81892A98100C32C53 /* Supporting Files */,
 			);
@@ -284,7 +283,7 @@
 		74B39C0B18A061E100AFC789 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				74B39C0918A061A800AFC789 /* Icon.png */,
+				74B39C0C18A1207000AFC789 /* Icon.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -387,12 +386,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74B39C0D18A1207000AFC789 /* Icon.png in Resources */,
 				168D61F81892A98100C32C53 /* Main_iPad.storyboard in Resources */,
 				168D61FD1892A98100C32C53 /* Images.xcassets in Resources */,
 				168D61F51892A98100C32C53 /* Main_iPhone.storyboard in Resources */,
 				168D61EC1892A98100C32C53 /* InfoPlist.strings in Resources */,
-				168D62361893A0BC00C32C53 /* data.sqlite in Resources */,
-				74B39C0A18A061A800AFC789 /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -731,6 +729,7 @@
 				74B39BB2189E405A00AFC789 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
