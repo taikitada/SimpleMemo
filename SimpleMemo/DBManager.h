@@ -15,7 +15,7 @@
 + (DBManager *)sharedInstance;
 
 @property (nonatomic, strong) FMDatabase *db;
-@property (nonatomic, strong) NSMutableArray *titleArray;;
+@property (nonatomic, strong) NSMutableArray *memosData;
 
 - (void)initDBManager;
 - (BOOL)beginTransaction;
@@ -25,7 +25,10 @@
 - (BOOL)deleteMemo:(Memo *)memo;
 - (BOOL)updateMemo:(Memo *)memo;
 - (void)deleteDB;
+- (void)replaceSelectedData:(NSString *)text memoid:(int)id;
 - (NSMutableArray *)MemoTitles;
+- (BOOL)updateMemo:(NSString *)content memoid:(int)MemoID;
+- (int)addMemo;
 
 - (NSMutableArray *)Memo;
 

@@ -13,8 +13,6 @@
 		168D61EC1892A98100C32C53 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 168D61EA1892A98100C32C53 /* InfoPlist.strings */; };
 		168D61EE1892A98100C32C53 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 168D61ED1892A98100C32C53 /* main.m */; };
 		168D61F21892A98100C32C53 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 168D61F11892A98100C32C53 /* AppDelegate.m */; };
-		168D61F51892A98100C32C53 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168D61F31892A98100C32C53 /* Main_iPhone.storyboard */; };
-		168D61F81892A98100C32C53 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168D61F61892A98100C32C53 /* Main_iPad.storyboard */; };
 		168D61FB1892A98100C32C53 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 168D61FA1892A98100C32C53 /* ViewController.m */; };
 		168D61FD1892A98100C32C53 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 168D61FC1892A98100C32C53 /* Images.xcassets */; };
 		168D62041892A98100C32C53 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D62031892A98100C32C53 /* XCTest.framework */; };
@@ -69,8 +67,6 @@
 		168D61EF1892A98100C32C53 /* SimpleMemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleMemo-Prefix.pch"; sourceTree = "<group>"; };
 		168D61F01892A98100C32C53 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		168D61F11892A98100C32C53 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		168D61F41892A98100C32C53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		168D61F71892A98100C32C53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		168D61F91892A98100C32C53 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		168D61FA1892A98100C32C53 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		168D61FC1892A98100C32C53 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -95,7 +91,10 @@
 		168D622F1892C23000C32C53 /* Memo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Memo.h; sourceTree = "<group>"; };
 		168D62301892C23000C32C53 /* Memo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Memo.m; sourceTree = "<group>"; };
 		168D62331893852200C32C53 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		74108CB818A1329F00CDDB39 /* data.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = data.sqlite; sourceTree = "<group>"; };
+		746DB69718A7590C00AD2B95 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		746DB69818A7590C00AD2B95 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		746DB69918A7590C00AD2B95 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		746DB69B18A761B700AD2B95 /* data.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = data.sqlite; path = ../data.sqlite; sourceTree = "<group>"; };
 		74B39BA2189E405A00AFC789 /* SimpleMemoModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleMemoModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B39BA8189E405A00AFC789 /* SimpleMemoModelTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SimpleMemoModelTests-Info.plist"; sourceTree = "<group>"; };
 		74B39BAA189E405A00AFC789 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -148,7 +147,6 @@
 		168D61D51892A98100C32C53 = {
 			isa = PBXGroup;
 			children = (
-				74108CB818A1329F00CDDB39 /* data.sqlite */,
 				74B39C0B18A061E100AFC789 /* Images */,
 				168D61E71892A98100C32C53 /* SimpleMemo */,
 				168D62091892A98100C32C53 /* SimpleMemoTests */,
@@ -184,13 +182,12 @@
 		168D61E71892A98100C32C53 /* SimpleMemo */ = {
 			isa = PBXGroup;
 			children = (
+				746DB69B18A761B700AD2B95 /* data.sqlite */,
 				168D621E1892AFE900C32C53 /* Lib */,
 				168D61F01892A98100C32C53 /* AppDelegate.h */,
 				168D61F11892A98100C32C53 /* AppDelegate.m */,
 				74B39BBD189FE3E500AFC789 /* ContentViewController.h */,
 				74B39BBE189FE3E500AFC789 /* ContentViewController.m */,
-				168D61F31892A98100C32C53 /* Main_iPhone.storyboard */,
-				168D61F61892A98100C32C53 /* Main_iPad.storyboard */,
 				168D61F91892A98100C32C53 /* ViewController.h */,
 				168D61FA1892A98100C32C53 /* ViewController.m */,
 				74B39BB4189FD58900AFC789 /* MasterViewController.h */,
@@ -368,6 +365,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 168D61D51892A98100C32C53;
 			productRefGroup = 168D61DF1892A98100C32C53 /* Products */;
@@ -387,9 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74B39C0D18A1207000AFC789 /* Icon.png in Resources */,
-				168D61F81892A98100C32C53 /* Main_iPad.storyboard in Resources */,
 				168D61FD1892A98100C32C53 /* Images.xcassets in Resources */,
-				168D61F51892A98100C32C53 /* Main_iPhone.storyboard in Resources */,
 				168D61EC1892A98100C32C53 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,30 +465,16 @@
 			isa = PBXVariantGroup;
 			children = (
 				168D61EB1892A98100C32C53 /* en */,
+				746DB69718A7590C00AD2B95 /* ja */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		168D61F31892A98100C32C53 /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				168D61F41892A98100C32C53 /* Base */,
-			);
-			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		168D61F61892A98100C32C53 /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				168D61F71892A98100C32C53 /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		168D620C1892A98100C32C53 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				168D620D1892A98100C32C53 /* en */,
+				746DB69818A7590C00AD2B95 /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -501,6 +483,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				74B39BAA189E405A00AFC789 /* en */,
+				746DB69918A7590C00AD2B95 /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -544,7 +527,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -577,7 +560,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

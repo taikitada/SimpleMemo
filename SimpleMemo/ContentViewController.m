@@ -15,6 +15,13 @@
     UINavigationController *navigationController;
 }
 
+- (id)initWithMemo:(Memo *)memo{
+	if(self = [super init]){
+        self.memo = memo;
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -23,8 +30,10 @@
     self.navigationItem.leftBarButtonItem = backBarButtonItem;
 
     tv = [[UITextView alloc] init];
+    tv.autocapitalizationType = UITextAutocapitalizationTypeNone;
     tv.frame = self.view.frame;
-    //tv.text = [datacontroller getSelectedData];
+    NSLog(@"%@", self.memo.content);
+    tv.text = self.memo.content;
     [tv becomeFirstResponder];
     
     [self.view addSubview:tv];
@@ -32,12 +41,21 @@
 }
 
 -(IBAction)back {
-        
     
     [[self navigationController] popViewControllerAnimated:NO];
-    
-    
+
 }
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    NSLog(@"%d",self.memo.MemoId);
+    DBManager *db = [DBManager sharedInstance];
+    [db updateMemo:tv.text memoid:self.memo.MemoId];
+}
+
+
+
+
 
 
 

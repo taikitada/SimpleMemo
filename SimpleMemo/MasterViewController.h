@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MasterViewController : UITableViewController
+@interface MasterViewController : UITableViewController <UISearchDisplayDelegate, UISearchBarDelegate> {
+    NSArray *originalData;
+    NSMutableArray *searchData;
+}
+
+@property (nonatomic, strong) NSMutableArray *memosData;
 
 @end

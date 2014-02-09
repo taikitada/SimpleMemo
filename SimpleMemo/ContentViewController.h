@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Memo.h"
 
 @interface ContentViewController : UIViewController
+
+@property (nonatomic, strong) Memo *memo;
+
+- (id)initWithMemo:(Memo *)memo;
 
 @end

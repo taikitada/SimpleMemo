@@ -41,9 +41,10 @@ static id _instance = nil;
     }
     [self setDb:[FMDatabase databaseWithPath:dbPath]];
     [self open];
-    self.titleArray = [self MemoTitles];
     
     [self alterTable];
+    self.memosData = [self Memo];
+    NSLog(@"%lu", [self.memosData count]);
     if(needInitData){
 //        [self insertInitData];
     }
@@ -76,6 +77,7 @@ static id _instance = nil;
     return YES;
 }
 
+
 - (void)alterTable{
     LOG_METHOD;
 }
@@ -96,12 +98,14 @@ static id _instance = nil;
 }
 
 - (void)commitTransaction{
+    [self open];
     LOG(@"\nTransaction COMMIT");
     [self.db commit];
     [self.db close];
 }
 
 - (void)rollbackTransaction{
+    [self open];
     LOG(@"\nTransaction ROLLBACK");
     [self.db rollback];
     [self.db close];
@@ -145,6 +149,23 @@ static id _instance = nil;
     return YES;
 }
 
+- (int)addMemo{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"YYYY/MM/dd HH:mm:ss"];
+    NSDate* date = [NSDate date];
+    NSString* dateStr = [formatter stringFromDate:date];
+    if(![self open]) return NO;
+    [self.db executeUpdate:@"INSERT INTO memo (title, content, created_at, updated_at) VALUES(?, ?, ?, ?)",
+     @"タイトル",
+     @"",
+     dateStr,
+     dateStr
+     ];
+    long long lastid = [self.db lastInsertRowId];
+    NSLog(@"%lld", lastid);
+    return (int) lastid;
+}
+
 - (NSMutableArray *)Memo{
     LOG_METHOD;
 	if(![self open]) return nil;
@@ -153,7 +174,7 @@ static id _instance = nil;
     FMResultSet *rs = [self.db executeQuery:@"\
                        SELECT id, title, content, created_at, updated_at \
                        FROM memo \
-                       ORDER BY updated_at ASC, id ASC\
+                       ORDER BY updated_at DESC, id ASC\
                        "];
     
     @autoreleasepool {
@@ -162,6 +183,7 @@ static id _instance = nil;
             Memo *memo = [[Memo alloc] init];
             memo.MemoId = [rs intForColumn:@"id"];
             memo.title = [rs stringForColumn:@"title"];
+            memo.content = [rs stringForColumn:@"content"];
             memo.updated_at = [rs stringForColumn:@"updated_at"];
             memo.created_at = [rs stringForColumn:@"created_at"];
             
@@ -183,7 +205,7 @@ static id _instance = nil;
     FMResultSet *rs = [self.db executeQuery:@"\
                        SELECT id, title, content, created_at, updated_at \
                        FROM memo \
-                       ORDER BY updated_at ASC, id ASC\
+                       ORDER BY updated_at DESC, id ASC\
                        "];
     @autoreleasepool {
         while ([rs next]) {
@@ -195,9 +217,16 @@ static id _instance = nil;
     return titles;
 }
 
+- (void)replaceSelectedData:(NSString *)text memoid:(int)id{
+    NSLog(@"%@",text);
+    NSLog(@"%d",id);
+    
+}
+
 - (BOOL)deleteMemo:(Memo *)memo{
     if(![self open]) return nil;
-    [self.db executeUpdate:@"DELETE FROM memo"];
+    [self.db executeUpdate:@"DELETE FROM memo where id =?",
+     @(memo.MemoId)];
     [self.db close];
     
     return NO;
@@ -217,6 +246,68 @@ static id _instance = nil;
     
     return NO;
     
+}
+
+- (BOOL)updateMemo:(NSString *)content memoid:(int)MemoID{
+    LOG_METHOD;
+    if(![self open]) return nil;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"YYYY/MM/dd HH:mm:ss"];
+    NSDate* date = [NSDate date];
+    NSString* dateStr = [formatter stringFromDate:date];
+    NSLog(@"%d",MemoID);
+    
+    NSDataDetector *linkDetector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeDate|NSTextCheckingTypeAddress|
+                                    NSTextCheckingTypeLink|
+                                    NSTextCheckingTypePhoneNumber|NSTextCheckingTypeTransitInformation
+                                                                   error:nil];
+    
+    
+    //チェックでマッチした結果がまとめて返ってくる
+    NSMutableArray *match_types = [[NSMutableArray alloc] init];
+    NSArray *matches = [linkDetector matchesInString:content
+                                             options:0
+                                               range:NSMakeRange(0,[content length])];
+    
+    //結果を1件ずつ比較する
+    for (NSTextCheckingResult *match in matches) {
+        //Linkにマッチしたら
+        if ([match resultType] == NSTextCheckingTypeLink) {
+            NSURL *url = [match URL];
+            NSLog(@"url:%@",[url description]);
+            [match_types addObject:@("1")];
+        } else if ([match resultType] == NSTextCheckingTypePhoneNumber) {
+            NSString *phoneNumber = [match phoneNumber];
+            NSLog(@"tel:%@",phoneNumber);
+            [match_types addObject:@("2")];
+        } else if([match resultType] == NSTextCheckingTypeDate){
+            NSDate *date = [match date];
+            NSLog(@"date:%@",date);
+            [match_types addObject:@("3")];
+        } else if ([match resultType] == NSTextCheckingTypeAddress){
+            NSDictionary *phoneNumber = [match addressComponents];
+            NSLog(@"addressComponents  %@",phoneNumber);
+        }
+    }
+    NSString *str = [match_types componentsJoinedByString:@","];
+    NSLog(@"%@",content);
+    NSLog(@"%@",dateStr);
+    NSLog(@"%@",str);
+
+    [self.db executeUpdate:@"UPDATE memo SET content = ?, match_type = ?, updated_at = ? WHERE id = ?",
+     content,
+     str,
+     dateStr,
+     @(MemoID)];
+    self.memosData = [self Memo];
+    /*
+    if ([self.db hadError]) {
+        LOG(@"Err %d: %@", [self.db lastErrorCode], [self.db lastErrorMessage]);
+        [self rollbackTransaction];
+        return NO;
+    }
+     */
+    return YES;
 }
 
 
