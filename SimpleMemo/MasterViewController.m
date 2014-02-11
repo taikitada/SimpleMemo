@@ -30,31 +30,32 @@
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     UIColor* color = [UIColor colorWithRed:0.855 green:0.647 blue:0.125 alpha:1.0];
     [[UIBarButtonItem appearanceWhenContainedIn:
-      [UINavigationBar class], nil] setTintColor:color];
+    [UINavigationBar class], nil] setTintColor:color];
     UIBarButtonItem * addButton = [[UIBarButtonItem alloc]
                                    initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButton_down:)];
     self.navigationItem.leftBarButtonItem = addButton;
-
-    UISearchBar *searchBar = [[UISearchBar alloc] init];
+    
+    CGRect frame = CGRectMake(0, 0, 140.0, 20.0);
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:frame];
     UISearchDisplayController *searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+    searchBar.showsCancelButton = YES;
     searchDisplayController.delegate = self;
     searchDisplayController.searchResultsDelegate = self;
     searchDisplayController.searchResultsDataSource = self;
     searchBar.placeholder = @"検索語句を入力";
-    
     searchBar.keyboardType = UIKeyboardTypeDefault;
     searchBar.tintColor = [UIColor colorWithRed:0.855 green:0.647 blue:0.125 alpha:1.0];
-    searchBar.showsScopeBar = YES;
-    searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"URL,Email", @"Phone", @"Date", nil];
-    self.searchDisplayController.searchBar.barTintColor = [UIColor whiteColor];
 
-    searchBar.showsCancelButton = NO;
+    
+    searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"URL,Email", @"Phone", @"Date", nil];
+    searchBar.showsScopeBar = YES;
+    self.searchDisplayController.searchBar.barTintColor = [UIColor whiteColor];
     [searchBar sizeToFit];
     searchBar.searchBarStyle = UISearchBarStyleMinimal;
     searchBar.delegate = self;
-    
     // UISearchBarを入れるためのコンテナViewをつくる
     UIView *searchBarContainer = [[UIView alloc] initWithFrame:searchBar.frame];
+    
     [searchBarContainer addSubview:searchBar];
     
     // UINavigationBar上に、UISearchBarを追加
@@ -85,7 +86,8 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated
-{
+{   DBManager *db = [DBManager sharedInstance];
+    db.memosData = [db Memo];
     [self.tableView reloadData];
     [super viewWillAppear:animated];
 }
@@ -100,42 +102,31 @@
     }
     NSLog(@"called cellfor....");
     
-    if(tableView == self.searchDisplayController.searchResultsTableView) {
-        NSString *item = [searchData objectAtIndex:indexPath.row];
-        NSLog(@"%@",item);
-    }else{
     DBManager *db = [DBManager sharedInstance];
     Memo *memo = (Memo *)[db.memosData objectAtIndex:indexPath.row];
-    NSLog(@"%@",memo.content);
+    //NSLog(@"%@",memo.content);
     
     cell.textLabel.text = memo.content;
     //cell.detailTextLabel.text = @"test";
-    }
     return cell;
     
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // セルの内容はNSArray型の「items」にセットされているものとする
-    if(tableView == self.searchDisplayController.searchResultsTableView) {
-        //検索キーワードが入力されている場合の処理.
-        return [searchData count];
-    }else{
     DBManager *db = [DBManager sharedInstance];
     NSInteger size;
-    [db initDBManager];
     size = [db.memosData count];
     return size;
-    }
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete){
         DBManager *db = [DBManager sharedInstance];
+        db.memosData = [db Memo];
         Memo *memo = (Memo *)[db.memosData objectAtIndex:indexPath.row];
-        NSLog(@"%d",memo.MemoId);
+        //NSLog(@"%d",memo.MemoId);
         [db deleteMemo:memo];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationFade];
     }
@@ -145,34 +136,35 @@
 {
     DBManager *db = [DBManager sharedInstance];
     Memo *memo = (Memo *)[db.memosData objectAtIndex:indexPath.row];
-    NSLog(@"%@", memo.content);
     ContentViewController *c = [[ContentViewController alloc] initWithMemo:memo];
     [self.navigationController pushViewController:c animated:NO];
 }
 
-#pragma mark -
-#pragma mark UISearchDisplayController Delegate Methods
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
 
-- (void)filterContentForSearchText:(NSString*)searchString scope:(NSString*)scope {
-    [searchData removeAllObjects];
-    DBManager *db = [DBManager sharedInstance];
-    NSMutableArray *memos = [db Memo];
-    
-    for(Memo *memo in memos) {
-        NSRange range = [memo.content rangeOfString:searchString
-                                     options:NSCaseInsensitiveSearch];
-        if(range.length > 0)
-            [searchData addObject:memo.content];
-        NSLog(@"%@",memo.content);
+    if(0 == searchText.length){
+        DBManager *db = [DBManager sharedInstance];
+        db.memosData = [db Memo];
+        [self.tableView reloadData];
+    }else{
+        DBManager *db = [DBManager sharedInstance];
+        [db searchMemo:searchText];
+        for (NSInteger i = 0; i < [db.memosData count]; i++) {
+            // 配列から要素を取得する
+            Memo *memo = [db.memosData objectAtIndex:i];
+            NSLog(@"%@", memo.content);
+        }
+        
     }
+    [self.tableView reloadData];
     
 }
 
-- (BOOL)searchDisplayController:(UISearchDisplayController*)controller shouldReloadTableForSearchString:(NSString*)searchString {
-    [self filterContentForSearchText: searchString
-                               scope: [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
-    NSLog(@"called search...");
-    return YES;
+- (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
+    DBManager *db = [DBManager sharedInstance];
+    NSLog(@"called searchBar");
+    db.memosData = [db selectMemos:selectedScope];
+    [self.tableView reloadData];
 }
 
 @end

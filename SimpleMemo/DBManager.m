@@ -43,7 +43,6 @@ static id _instance = nil;
     [self open];
     
     [self alterTable];
-    self.memosData = [self Memo];
     NSLog(@"%lu", [self.memosData count]);
     if(needInitData){
 //        [self insertInitData];
@@ -162,7 +161,7 @@ static id _instance = nil;
      dateStr
      ];
     long long lastid = [self.db lastInsertRowId];
-    NSLog(@"%lld", lastid);
+    //NSLog(@"%lld", lastid);
     return (int) lastid;
 }
 
@@ -199,9 +198,47 @@ static id _instance = nil;
 	return nil;
 }
 
+- (void)searchMemo:(NSString *)searchtext{
+    LOG_METHOD;
+	[self open];
+	NSMutableArray *data = [[NSMutableArray alloc] initWithCapacity:0];
+    NSString *srchtxt = [[NSString alloc]init] ;
+    srchtxt = [srchtxt stringByAppendingString:@"%%"];
+    srchtxt = [srchtxt stringByAppendingString:searchtext];
+    srchtxt = [srchtxt stringByAppendingString:@"%%"];
+    
+    FMResultSet *rs = [self.db executeQuery:@"\
+                       SELECT id, title, content, created_at, updated_at \
+                       FROM memo \
+                       WHERE content like ?\
+                       ORDER BY updated_at DESC, id ASC",
+                       srchtxt];
+    
+    @autoreleasepool {
+        while ([rs next]) {
+            NSLog(@"called loop");
+            
+            Memo *memo = [[Memo alloc] init];
+            memo.MemoId = [rs intForColumn:@"id"];
+            memo.title = [rs stringForColumn:@"title"];
+            memo.content = [rs stringForColumn:@"content"];
+            memo.updated_at = [rs stringForColumn:@"updated_at"];
+            memo.created_at = [rs stringForColumn:@"created_at"];
+            
+            [data addObject:memo];
+        }
+    }
+	[rs close];
+	[self.db close];
+    self.memosData = data;
+}
+
+
+
 - (NSMutableArray *)MemoTitles{
     if(![self open]) return nil;
     NSMutableArray *titles = [[NSMutableArray alloc] initWithCapacity:0];
+    [self.db setTraceExecution:YES];
     FMResultSet *rs = [self.db executeQuery:@"\
                        SELECT id, title, content, created_at, updated_at \
                        FROM memo \
@@ -218,8 +255,8 @@ static id _instance = nil;
 }
 
 - (void)replaceSelectedData:(NSString *)text memoid:(int)id{
-    NSLog(@"%@",text);
-    NSLog(@"%d",id);
+    //NSLog(@"%@",text);
+    //NSLog(@"%d",id);
     
 }
 
@@ -248,14 +285,45 @@ static id _instance = nil;
     
 }
 
+- (NSMutableArray *)selectMemos:(NSInteger)selectedID{
+    if(![self open]) return nil;
+    NSLog(@"in selectMemos");
+    NSMutableArray *memos = [[NSMutableArray alloc] initWithCapacity:0];
+    [self.db setTraceExecution:YES];
+
+    
+    FMResultSet *rs = [self.db executeQuery:@"\
+                       SELECT id, title, content, created_at, updated_at, match_type \
+                       FROM memo \
+                       WHERE match_type = ?\
+                       ORDER BY updated_at DESC, id ASC",
+                       @(selectedID)];
+    @autoreleasepool {
+        while ([rs next]) {
+            NSLog(@"called loop");
+            
+            Memo *memo = [[Memo alloc] init];
+            memo.MemoId = [rs intForColumn:@"id"];
+            memo.title = [rs stringForColumn:@"title"];
+            memo.content = [rs stringForColumn:@"content"];
+            memo.updated_at = [rs stringForColumn:@"updated_at"];
+            memo.created_at = [rs stringForColumn:@"created_at"];
+            
+            [memos addObject:memo];
+        }
+    }
+    return memos;
+    
+}
+
 - (BOOL)updateMemo:(NSString *)content memoid:(int)MemoID{
     LOG_METHOD;
-    if(![self open]) return nil;
+    if(![self open]) return NO;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY/MM/dd HH:mm:ss"];
     NSDate* date = [NSDate date];
     NSString* dateStr = [formatter stringFromDate:date];
-    NSLog(@"%d",MemoID);
+    //NSLog(@"%d",MemoID);
     
     NSDataDetector *linkDetector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeDate|NSTextCheckingTypeAddress|
                                     NSTextCheckingTypeLink|
@@ -275,24 +343,25 @@ static id _instance = nil;
         if ([match resultType] == NSTextCheckingTypeLink) {
             NSURL *url = [match URL];
             NSLog(@"url:%@",[url description]);
-            [match_types addObject:@("1")];
+            [match_types addObject:@("0")];
         } else if ([match resultType] == NSTextCheckingTypePhoneNumber) {
             NSString *phoneNumber = [match phoneNumber];
             NSLog(@"tel:%@",phoneNumber);
-            [match_types addObject:@("2")];
+            [match_types addObject:@("1")];
         } else if([match resultType] == NSTextCheckingTypeDate){
             NSDate *date = [match date];
             NSLog(@"date:%@",date);
-            [match_types addObject:@("3")];
+            [match_types addObject:@("2")];
         } else if ([match resultType] == NSTextCheckingTypeAddress){
             NSDictionary *phoneNumber = [match addressComponents];
             NSLog(@"addressComponents  %@",phoneNumber);
         }
     }
     NSString *str = [match_types componentsJoinedByString:@","];
-    NSLog(@"%@",content);
-    NSLog(@"%@",dateStr);
-    NSLog(@"%@",str);
+   
+    NSLog(@"content:%@",content);
+    NSLog(@"date:%@",dateStr);
+    NSLog(@"match_types:%@",str);
 
     [self.db executeUpdate:@"UPDATE memo SET content = ?, match_type = ?, updated_at = ? WHERE id = ?",
      content,

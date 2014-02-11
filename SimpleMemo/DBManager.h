@@ -29,6 +29,8 @@
 - (NSMutableArray *)MemoTitles;
 - (BOOL)updateMemo:(NSString *)content memoid:(int)MemoID;
 - (int)addMemo;
+- (void)searchMemo:(NSString *)searchtext;
+- (NSMutableArray *)selectMemos:(NSInteger)selectedID;
 
 - (NSMutableArray *)Memo;
 

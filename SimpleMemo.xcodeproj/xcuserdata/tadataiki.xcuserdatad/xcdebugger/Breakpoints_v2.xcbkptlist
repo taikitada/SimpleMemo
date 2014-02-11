@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimpleMemo/DBManager.m"
-            timestampString = "413625821.345837"
+            timestampString = "413740418.14391"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "-MemoTitles"
             landmarkType = "5">
          </BreakpointContent>

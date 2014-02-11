@@ -28,7 +28,6 @@
     UIColor* color = [UIColor colorWithRed:0.855 green:0.647 blue:0.125 alpha:1.0];
     self.window.tintColor = color;
     
-    [self.window makeKeyAndVisible];
     return YES;
 }
 

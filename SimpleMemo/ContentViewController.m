@@ -32,7 +32,6 @@
     tv = [[UITextView alloc] init];
     tv.autocapitalizationType = UITextAutocapitalizationTypeNone;
     tv.frame = self.view.frame;
-    NSLog(@"%@", self.memo.content);
     tv.text = self.memo.content;
     [tv becomeFirstResponder];
     
@@ -48,7 +47,6 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    NSLog(@"%d",self.memo.MemoId);
     DBManager *db = [DBManager sharedInstance];
     [db updateMemo:tv.text memoid:self.memo.MemoId];
 }
