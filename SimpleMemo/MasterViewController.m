@@ -99,6 +99,7 @@
     if (!cell) { // yes
         // セルを作成
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     NSLog(@"called cellfor....");
     
