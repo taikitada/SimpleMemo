@@ -65,12 +65,12 @@ static id _instance = nil;
     NSError *error;
     if(![fm fileExistsAtPath:dir]){
         if(![fm createDirectoryAtPath:dir withIntermediateDirectories:YES attributes:nil error:&error]){
-//            LOG(@"%@", [error localizedDescription]);
+            LOG(@"%@", [error localizedDescription]);
             return NO;
         }
     }
     if(![fm copyItemAtPath:from toPath:to error:&error]){
-//        LOG(@"[DB ERROR] %@", [error localizedDescription]);
+        LOG(@"[DB ERROR] %@", [error localizedDescription]);
         return NO;
     }
     return YES;

@@ -38,6 +38,16 @@
                ReferencedContainer = "container:SimpleMemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "74B39BA1189E405A00AFC789"
+               BuildableName = "SimpleMemoModelTests.xctest"
+               BlueprintName = "SimpleMemoModelTests"
+               ReferencedContainer = "container:SimpleMemo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
