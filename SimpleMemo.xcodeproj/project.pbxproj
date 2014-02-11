@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		161B437118AA406600EFDA83 /* data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 161B437018AA406600EFDA83 /* data.sqlite */; };
+		161B437318AA43AE00EFDA83 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 161B437218AA43AE00EFDA83 /* Main_iPhone.storyboard */; };
 		168D61E21892A98100C32C53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D61E11892A98100C32C53 /* Foundation.framework */; };
 		168D61E41892A98100C32C53 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D61E31892A98100C32C53 /* CoreGraphics.framework */; };
 		168D61E61892A98100C32C53 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D61E51892A98100C32C53 /* UIKit.framework */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		161B437018AA406600EFDA83 /* data.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = data.sqlite; sourceTree = "<group>"; };
+		161B437218AA43AE00EFDA83 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		168D61DE1892A98100C32C53 /* SimpleMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		168D61E11892A98100C32C53 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		168D61E31892A98100C32C53 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -148,6 +150,7 @@
 		168D61D51892A98100C32C53 = {
 			isa = PBXGroup;
 			children = (
+				161B437218AA43AE00EFDA83 /* Main_iPhone.storyboard */,
 				161B437018AA406600EFDA83 /* data.sqlite */,
 				74B39C0B18A061E100AFC789 /* Images */,
 				168D61E71892A98100C32C53 /* SimpleMemo */,
@@ -387,6 +390,7 @@
 			files = (
 				74B39C0D18A1207000AFC789 /* Icon.png in Resources */,
 				161B437118AA406600EFDA83 /* data.sqlite in Resources */,
+				161B437318AA43AE00EFDA83 /* Main_iPhone.storyboard in Resources */,
 				168D61FD1892A98100C32C53 /* Images.xcassets in Resources */,
 				168D61EC1892A98100C32C53 /* InfoPlist.strings in Resources */,
 			);
