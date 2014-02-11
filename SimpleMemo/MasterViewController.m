@@ -38,7 +38,9 @@
     CGRect frame = CGRectMake(0, 0, 140.0, 20.0);
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:frame];
     UISearchDisplayController *searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+    searchBar.delegate = self;
     searchBar.showsCancelButton = YES;
+    [[UIBarButtonItem appearanceWhenContainedIn: [UISearchBar class], nil] setTintColor:color];
     searchDisplayController.delegate = self;
     searchDisplayController.searchResultsDelegate = self;
     searchDisplayController.searchResultsDataSource = self;
@@ -52,7 +54,7 @@
     self.searchDisplayController.searchBar.barTintColor = [UIColor whiteColor];
     [searchBar sizeToFit];
     searchBar.searchBarStyle = UISearchBarStyleMinimal;
-    searchBar.delegate = self;
+    
     // UISearchBarを入れるためのコンテナViewをつくる
     UIView *searchBarContainer = [[UIView alloc] initWithFrame:searchBar.frame];
     
@@ -166,6 +168,15 @@
     NSLog(@"called searchBar");
     db.memosData = [db selectMemos:selectedScope];
     [self.tableView reloadData];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    DBManager *db = [DBManager sharedInstance];
+    db.memosData = [db Memo];
+    [self.tableView endEditing:YES];
+    [self.tableView reloadData];
+    
+    
 }
 
 @end
