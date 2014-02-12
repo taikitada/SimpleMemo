@@ -30,6 +30,7 @@
 		168D622E1892AFE900C32C53 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 168D62291892AFE900C32C53 /* FMResultSet.m */; };
 		168D62311892C23000C32C53 /* Memo.m in Sources */ = {isa = PBXBuildFile; fileRef = 168D62301892C23000C32C53 /* Memo.m */; };
 		168D62341893852200C32C53 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D62331893852200C32C53 /* libsqlite3.dylib */; };
+		7435DE5E18ABE456007B1BC8 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7435DE5D18ABE456007B1BC8 /* Icon.png */; };
 		74B39BA3189E405A00AFC789 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D62031892A98100C32C53 /* XCTest.framework */; };
 		74B39BA4189E405A00AFC789 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D61E11892A98100C32C53 /* Foundation.framework */; };
 		74B39BA5189E405A00AFC789 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D61E51892A98100C32C53 /* UIKit.framework */; };
@@ -38,7 +39,6 @@
 		74B39BB6189FD58900AFC789 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B39BB5189FD58900AFC789 /* MasterViewController.m */; };
 		74B39BBC189FD87C00AFC789 /* TextAreaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B39BBB189FD87C00AFC789 /* TextAreaCell.m */; };
 		74B39BBF189FE3E500AFC789 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B39BBE189FE3E500AFC789 /* ContentViewController.m */; };
-		74B39C0D18A1207000AFC789 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B39C0C18A1207000AFC789 /* Icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +95,7 @@
 		168D622F1892C23000C32C53 /* Memo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Memo.h; sourceTree = "<group>"; };
 		168D62301892C23000C32C53 /* Memo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Memo.m; sourceTree = "<group>"; };
 		168D62331893852200C32C53 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		7435DE5D18ABE456007B1BC8 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		746DB69718A7590C00AD2B95 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		746DB69818A7590C00AD2B95 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		746DB69918A7590C00AD2B95 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -109,7 +110,6 @@
 		74B39BBB189FD87C00AFC789 /* TextAreaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextAreaCell.m; sourceTree = "<group>"; };
 		74B39BBD189FE3E500AFC789 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
 		74B39BBE189FE3E500AFC789 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
-		74B39C0C18A1207000AFC789 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,7 +284,7 @@
 		74B39C0B18A061E100AFC789 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				74B39C0C18A1207000AFC789 /* Icon.png */,
+				7435DE5D18ABE456007B1BC8 /* Icon.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -354,6 +354,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Taiki;
 				TargetAttributes = {
+					168D61DD1892A98100C32C53 = {
+						DevelopmentTeam = 382KZCETTH;
+					};
 					168D62011892A98100C32C53 = {
 						TestTargetID = 168D61DD1892A98100C32C53;
 					};
@@ -388,9 +391,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74B39C0D18A1207000AFC789 /* Icon.png in Resources */,
 				161B437118AA406600EFDA83 /* data.sqlite in Resources */,
 				161B437318AA43AE00EFDA83 /* Main_iPhone.storyboard in Resources */,
+				7435DE5E18ABE456007B1BC8 /* Icon.png in Resources */,
 				168D61FD1892A98100C32C53 /* Images.xcassets in Resources */,
 				168D61EC1892A98100C32C53 /* InfoPlist.strings in Resources */,
 			);
@@ -514,7 +517,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: TAIKI TADA (FPNK5PSY9U)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -532,8 +536,11 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "5994DE9A-BB2C-44B9-A493-28744EFE245A";
+				"PROVISIONING_PROFILE[sdk=*]" = "5994DE9A-BB2C-44B9-A493-28744EFE245A";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -554,7 +561,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: TAIKI TADA (FPNK5PSY9U)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -565,9 +573,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE = "5994DE9A-BB2C-44B9-A493-28744EFE245A";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALIDATE_PRODUCT = YES;
+				VALIDATE_PRODUCT = NO;
 			};
 			name = Release;
 		};
@@ -576,10 +585,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimpleMemo/SimpleMemo-Prefix.pch";
 				INFOPLIST_FILE = "SimpleMemo/SimpleMemo-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -589,10 +601,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimpleMemo/SimpleMemo-Prefix.pch";
 				INFOPLIST_FILE = "SimpleMemo/SimpleMemo-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

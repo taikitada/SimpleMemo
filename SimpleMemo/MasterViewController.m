@@ -32,7 +32,7 @@
     [[UIBarButtonItem appearanceWhenContainedIn:
     [UINavigationBar class], nil] setTintColor:color];
     UIBarButtonItem * addButton = [[UIBarButtonItem alloc]
-                                   initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButton_down:)];
+                                   initWithTitle:@"新規" style:UIBarButtonItemStyleBordered target:self action:@selector(addButton_down:)];
     self.navigationItem.leftBarButtonItem = addButton;
     
     CGRect frame = CGRectMake(0, 0, 140.0, 20.0);
@@ -49,7 +49,7 @@
     searchBar.tintColor = [UIColor colorWithRed:0.855 green:0.647 blue:0.125 alpha:1.0];
 
     
-    searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"URL,Email", @"Phone", @"Date", nil];
+    searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"URL,Email", @"Phone", @"Date", @"全て", nil];
     searchBar.showsScopeBar = YES;
     self.searchDisplayController.searchBar.barTintColor = [UIColor whiteColor];
     [searchBar sizeToFit];

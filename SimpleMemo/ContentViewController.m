@@ -26,8 +26,9 @@
 {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:self action:@selector(back)];
+    UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"一覧へ戻る" style:UIBarButtonItemStyleDone target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = backBarButtonItem;
+    self.navigationItem.rightBarButtonItem = nil;
 
     tv = [[UITextView alloc] init];
     tv.autocapitalizationType = UITextAutocapitalizationTypeNone;
