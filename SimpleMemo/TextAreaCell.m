@@ -21,18 +21,16 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        self.tv = [[UITextView alloc] initWithFrame:CGRectInset(self.bounds, 10, 10)];
+        //self.tv = [[UITextView alloc] initWithFrame:CGRectInset(self.bounds, 100, 10)];
         self.tv.userInteractionEnabled =YES;
+        //self.tv.text = @"hogehoge";
         
         [self.contentView addSubview:self.tv];
     }
     return self;
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"I'm a button" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-    [alert show];
-}
+
 
 
 @end

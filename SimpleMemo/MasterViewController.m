@@ -28,6 +28,7 @@
     [super viewDidLoad];
     self.tableView.dataSource = self;
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem.title = @"削除";
     UIColor* color = [UIColor colorWithRed:0.855 green:0.647 blue:0.125 alpha:1.0];
     [[UIBarButtonItem appearanceWhenContainedIn:
     [UINavigationBar class], nil] setTintColor:color];
@@ -100,7 +101,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) { // yes
         // セルを作成
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[TextAreaCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     NSLog(@"called cellfor....");
@@ -110,7 +111,15 @@
     //NSLog(@"%@",memo.content);
     
     cell.textLabel.text = memo.content;
-    //cell.detailTextLabel.text = @"test";
+    cell.detailTextLabel.textAlignment = NSTextAlignmentRight;
+    NSArray *arr;
+    arr = [memo.updated_at componentsSeparatedByString:@" "];
+    
+    cell.detailTextLabel.text =
+    arr[0];
+    UIFont *font = [UIFont systemFontOfSize:12];
+    cell.detailTextLabel.font = font;
+    
     return cell;
     
 }
@@ -120,6 +129,7 @@
     DBManager *db = [DBManager sharedInstance];
     NSInteger size;
     size = [db.memosData count];
+    NSLog(@"%d",size);
     return size;
 }
 
@@ -129,7 +139,7 @@
         DBManager *db = [DBManager sharedInstance];
         db.memosData = [db Memo];
         Memo *memo = (Memo *)[db.memosData objectAtIndex:indexPath.row];
-        //NSLog(@"%d",memo.MemoId);
+        NSLog(@"%d",memo.MemoId);
         [db deleteMemo:memo];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationFade];
     }
@@ -173,10 +183,15 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     DBManager *db = [DBManager sharedInstance];
     db.memosData = [db Memo];
+    searchBar.text = @"";
     [self.tableView endEditing:YES];
     [self.tableView reloadData];
     
     
 }
+
+
+
+
 
 @end

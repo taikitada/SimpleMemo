@@ -33,6 +33,7 @@ static id _instance = nil;
     NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *dir = [paths objectAtIndex:0];
     NSString *dbPath = [dir stringByAppendingPathComponent:@"data.sqlite"];
+    NSLog(@"%@",dir);
     
     BOOL needInitData = NO;
     if(![fm fileExistsAtPath:dbPath]){
@@ -43,7 +44,6 @@ static id _instance = nil;
     [self open];
     
     [self alterTable];
-    NSLog(@"%lu", [self.memosData count]);
     if(needInitData){
 //        [self insertInitData];
     }
@@ -233,27 +233,6 @@ static id _instance = nil;
     self.memosData = data;
 }
 
-
-
-- (NSMutableArray *)MemoTitles{
-    if(![self open]) return nil;
-    NSMutableArray *titles = [[NSMutableArray alloc] initWithCapacity:0];
-    [self.db setTraceExecution:YES];
-    FMResultSet *rs = [self.db executeQuery:@"\
-                       SELECT id, title, content, created_at, updated_at \
-                       FROM memo \
-                       ORDER BY updated_at DESC, id ASC\
-                       "];
-    @autoreleasepool {
-        while ([rs next]) {
-            NSString *title = [rs stringForColumn:@"title"];
-            [titles addObject: title];
-        }
-    }
-    
-    return titles;
-}
-
 - (void)replaceSelectedData:(NSString *)text memoid:(int)id{
     //NSLog(@"%@",text);
     //NSLog(@"%d",id);
@@ -261,12 +240,18 @@ static id _instance = nil;
 }
 
 - (BOOL)deleteMemo:(Memo *)memo{
-    if(![self open]) return nil;
+    if(![self open]) return NO;
+    [self.db beginTransaction];
     [self.db executeUpdate:@"DELETE FROM memo where id =?",
      @(memo.MemoId)];
+    [self.db commit];
     [self.db close];
+    self.memosData = [self Memo];
+    int size = [self.memosData count];
+    NSLog(@"%d",size);
     
-    return NO;
+    
+    return YES;
     
 }
 
@@ -311,6 +296,9 @@ static id _instance = nil;
             
             [memos addObject:memo];
         }
+    }
+    if(selectedID == 3){
+        memos = [self Memo];
     }
     return memos;
     

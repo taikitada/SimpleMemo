@@ -26,7 +26,6 @@
 - (BOOL)updateMemo:(Memo *)memo;
 - (void)deleteDB;
 - (void)replaceSelectedData:(NSString *)text memoid:(int)id;
-- (NSMutableArray *)MemoTitles;
 - (BOOL)updateMemo:(NSString *)content memoid:(int)MemoID;
 - (int)addMemo;
 - (void)searchMemo:(NSString *)searchtext;
