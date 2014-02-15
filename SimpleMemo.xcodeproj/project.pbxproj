@@ -37,7 +37,6 @@
 		74B39BAB189E405A00AFC789 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74B39BA9189E405A00AFC789 /* InfoPlist.strings */; };
 		74B39BAD189E405A00AFC789 /* SimpleMemoModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B39BAC189E405A00AFC789 /* SimpleMemoModelTests.m */; };
 		74B39BB6189FD58900AFC789 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B39BB5189FD58900AFC789 /* MasterViewController.m */; };
-		74B39BBC189FD87C00AFC789 /* TextAreaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B39BBB189FD87C00AFC789 /* TextAreaCell.m */; };
 		74B39BBF189FE3E500AFC789 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B39BBE189FE3E500AFC789 /* ContentViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -106,8 +105,6 @@
 		74B39BAE189E405A00AFC789 /* SimpleMemoModelTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleMemoModelTests-Prefix.pch"; sourceTree = "<group>"; };
 		74B39BB4189FD58900AFC789 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		74B39BB5189FD58900AFC789 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		74B39BBA189FD87C00AFC789 /* TextAreaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextAreaCell.h; sourceTree = "<group>"; };
-		74B39BBB189FD87C00AFC789 /* TextAreaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextAreaCell.m; sourceTree = "<group>"; };
 		74B39BBD189FE3E500AFC789 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
 		74B39BBE189FE3E500AFC789 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,8 +193,6 @@
 				168D61FA1892A98100C32C53 /* ViewController.m */,
 				74B39BB4189FD58900AFC789 /* MasterViewController.h */,
 				74B39BB5189FD58900AFC789 /* MasterViewController.m */,
-				74B39BBA189FD87C00AFC789 /* TextAreaCell.h */,
-				74B39BBB189FD87C00AFC789 /* TextAreaCell.m */,
 				168D62191892ADF000C32C53 /* DBManager.h */,
 				168D621A1892ADF000C32C53 /* DBManager.m */,
 				168D622F1892C23000C32C53 /* Memo.h */,
@@ -425,7 +420,6 @@
 				168D61FB1892A98100C32C53 /* ViewController.m in Sources */,
 				168D622D1892AFE900C32C53 /* FMDatabaseQueue.m in Sources */,
 				168D61F21892A98100C32C53 /* AppDelegate.m in Sources */,
-				74B39BBC189FD87C00AFC789 /* TextAreaCell.m in Sources */,
 				74B39BBF189FE3E500AFC789 /* ContentViewController.m in Sources */,
 				168D61EE1892A98100C32C53 /* main.m in Sources */,
 				168D622A1892AFE900C32C53 /* FMDatabase.m in Sources */,
@@ -517,9 +511,9 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: TAIKI TADA (FPNK5PSY9U)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: TAIKI TADA (FPNK5PSY9U)";
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -561,7 +555,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: TAIKI TADA (FPNK5PSY9U)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: TAIKI TADA (FPNK5PSY9U)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -576,7 +570,7 @@
 				PROVISIONING_PROFILE = "5994DE9A-BB2C-44B9-A493-28744EFE245A";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALIDATE_PRODUCT = NO;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};

@@ -15,6 +15,7 @@
     UINavigationController *navigationController;
 }
 
+
 - (id)initWithMemo:(Memo *)memo{
 	if(self = [super init]){
         self.memo = memo;
@@ -33,6 +34,7 @@
     tv = [[UITextView alloc] init];
     tv.autocapitalizationType = UITextAutocapitalizationTypeNone;
     tv.frame = self.view.frame;
+    NSLog(@"%d",self.memo.MemoId);
     tv.text = self.memo.content;
     [tv becomeFirstResponder];
     
@@ -48,8 +50,23 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    DBManager *db = [DBManager sharedInstance];
-    [db updateMemo:tv.text memoid:self.memo.MemoId];
+    NSLog(@"%@",tv.text);
+    if (tv.text.length == 0){
+    }else{
+        NSLog(@"make memo");
+        NSLog(@"%d",self.memo.MemoId);
+        DBManager *db = [DBManager sharedInstance];
+        if(self.memo.MemoId == -1){
+            NSLog(@"%d", self.memo.MemoId);
+            Memo *memo = [[Memo alloc] init];
+            memo.MemoId = [db addMemo];
+            [db updateMemo:tv.text memoid:memo.MemoId];
+            [db close];
+        }else{
+            [db updateMemo:tv.text memoid:self.memo.MemoId];
+        }
+        
+    }
 }
 
 

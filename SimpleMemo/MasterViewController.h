@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DBManager.h"
 
-@interface MasterViewController : UITableViewController <UISearchDisplayDelegate, UISearchBarDelegate> 
+@interface MasterViewController : UITableViewController <UISearchDisplayDelegate, UISearchBarDelegate, UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *memosData;
+@property (nonatomic, strong) DBManager *dm;
 
 @end

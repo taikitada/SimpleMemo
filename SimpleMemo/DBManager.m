@@ -17,6 +17,7 @@
 static id _instance = nil;
 
 + (DBManager *)sharedInstance{
+    NSLog(@"called sharedInstance");
 
     @synchronized(self) {
         if (!_instance) {
@@ -84,6 +85,14 @@ static id _instance = nil;
 - (BOOL)open{
     if (![self.db open]) {
         LOG(@"Could not open db.");
+        return NO;
+    }
+    return YES;
+}
+
+- (BOOL)close{
+    if (![self.db close]) {
+        LOG(@"Could not close db.");
         return NO;
     }
     return YES;
@@ -247,8 +256,8 @@ static id _instance = nil;
     [self.db commit];
     [self.db close];
     self.memosData = [self Memo];
-    int size = [self.memosData count];
-    NSLog(@"%d",size);
+    long size = [self.memosData count];
+    NSLog(@"%ld",size);
     
     
     return YES;
@@ -275,14 +284,30 @@ static id _instance = nil;
     NSLog(@"in selectMemos");
     NSMutableArray *memos = [[NSMutableArray alloc] initWithCapacity:0];
     [self.db setTraceExecution:YES];
-
+    NSString *match_type;
+    NSLog(@"%ld",selectedID);
+    if(selectedID == 1){
+        match_type = @"url";
+    }else if (selectedID == 2){
+        match_type = @"tel";
+    }else if(selectedID == 3){
+        match_type = @"date";
+    }else {
+        match_type = @"";
+    }
+    NSLog(@"%@", match_type);
+    NSString *srcmatch;
+    srcmatch = @"%";
+    srcmatch = [srcmatch stringByAppendingString:match_type];
+    srcmatch = [srcmatch stringByAppendingString:@"%"];
+    NSLog(@"%@",srcmatch);
     
     FMResultSet *rs = [self.db executeQuery:@"\
                        SELECT id, title, content, created_at, updated_at, match_type \
                        FROM memo \
-                       WHERE match_type = ?\
+                       WHERE match_type like ?\
                        ORDER BY updated_at DESC, id ASC",
-                       @(selectedID)];
+                       srcmatch];
     @autoreleasepool {
         while ([rs next]) {
             NSLog(@"called loop");
@@ -297,7 +322,7 @@ static id _instance = nil;
             [memos addObject:memo];
         }
     }
-    if(selectedID == 3){
+    if(selectedID == 0){
         memos = [self Memo];
     }
     return memos;
@@ -331,15 +356,15 @@ static id _instance = nil;
         if ([match resultType] == NSTextCheckingTypeLink) {
             NSURL *url = [match URL];
             NSLog(@"url:%@",[url description]);
-            [match_types addObject:@("0")];
+            [match_types addObject:@("url")];
         } else if ([match resultType] == NSTextCheckingTypePhoneNumber) {
             NSString *phoneNumber = [match phoneNumber];
             NSLog(@"tel:%@",phoneNumber);
-            [match_types addObject:@("1")];
+            [match_types addObject:@("tel")];
         } else if([match resultType] == NSTextCheckingTypeDate){
             NSDate *date = [match date];
             NSLog(@"date:%@",date);
-            [match_types addObject:@("2")];
+            [match_types addObject:@("date")];
         } else if ([match resultType] == NSTextCheckingTypeAddress){
             NSDictionary *phoneNumber = [match addressComponents];
             NSLog(@"addressComponents  %@",phoneNumber);

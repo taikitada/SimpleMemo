@@ -32,6 +32,7 @@
 - (NSMutableArray *)selectMemos:(NSInteger)selectedID;
 
 - (NSMutableArray *)Memo;
+- (BOOL)close;
 
 
 

@@ -7,9 +7,7 @@
 //
 
 #import "MasterViewController.h"
-#import "TextAreaCell.h"
 #import "ContentViewController.h"
-#import "DBManager.h"
 
 
 @implementation MasterViewController
@@ -18,7 +16,8 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        
+        self.dm = [DBManager sharedInstance];
+        self.memosData = [self.dm Memo];
     }
     return self;
 }
@@ -50,7 +49,7 @@
     searchBar.tintColor = [UIColor colorWithRed:0.855 green:0.647 blue:0.125 alpha:1.0];
 
     
-    searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"URL,Email", @"Phone", @"Date", @"全て", nil];
+    searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"全て", @"URL,Email", @"電話番号", @"日付", nil];
     searchBar.showsScopeBar = YES;
     self.searchDisplayController.searchBar.barTintColor = [UIColor whiteColor];
     [searchBar sizeToFit];
@@ -73,26 +72,17 @@
 
 - (IBAction)addButton_down:(UIBarButtonItem *)sender
 {
-    NSLog(@"add button");
-    DBManager *db = [DBManager sharedInstance];
-    [db beginTransaction];
-    int memoid = [db addMemo];
-    [db commitTransaction];
-    NSLog(@"add button end");
     Memo *memo = [[Memo alloc] init];
-    memo.MemoId = memoid;
-    NSLog(@"%d",memoid);
-    
+    memo.MemoId = -1;
+                  
     ContentViewController *c = [[ContentViewController alloc] initWithMemo:memo];
     [self.navigationController pushViewController:c animated:NO];
 
 }
-
-- (void)viewDidAppear:(BOOL)animated
-{   DBManager *db = [DBManager sharedInstance];
-    db.memosData = [db Memo];
+- (void)viewDidAppear:(BOOL)animated{
+    self.memosData = [self.dm Memo];
     [self.tableView reloadData];
-    [super viewWillAppear:animated];
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -101,13 +91,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) { // yes
         // セルを作成
-        cell = [[TextAreaCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    NSLog(@"called cellfor....");
     
-    DBManager *db = [DBManager sharedInstance];
-    Memo *memo = (Memo *)[db.memosData objectAtIndex:indexPath.row];
+    Memo *memo = (Memo *)[self.memosData objectAtIndex:indexPath.row];
     //NSLog(@"%@",memo.content);
     
     cell.textLabel.text = memo.content;
@@ -115,8 +103,7 @@
     NSArray *arr;
     arr = [memo.updated_at componentsSeparatedByString:@" "];
     
-    cell.detailTextLabel.text =
-    arr[0];
+    cell.detailTextLabel.text = arr[0];
     UIFont *font = [UIFont systemFontOfSize:12];
     cell.detailTextLabel.font = font;
     
@@ -126,29 +113,26 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    DBManager *db = [DBManager sharedInstance];
     NSInteger size;
-    size = [db.memosData count];
-    NSLog(@"%d",size);
+    size = [self.memosData count];
+    NSLog(@"%ld",size);
     return size;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete){
-        DBManager *db = [DBManager sharedInstance];
-        db.memosData = [db Memo];
-        Memo *memo = (Memo *)[db.memosData objectAtIndex:indexPath.row];
-        NSLog(@"%d",memo.MemoId);
-        [db deleteMemo:memo];
+        Memo *memo = (Memo *)[self.memosData objectAtIndex:indexPath.row];
+        [self.dm deleteMemo:memo];
+        self.memosData = [self.dm Memo];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DBManager *db = [DBManager sharedInstance];
-    Memo *memo = (Memo *)[db.memosData objectAtIndex:indexPath.row];
+    NSLog(@"%ld",indexPath.row);
+    Memo *memo = (Memo *)[self.memosData objectAtIndex:indexPath.row];
     ContentViewController *c = [[ContentViewController alloc] initWithMemo:memo];
     [self.navigationController pushViewController:c animated:NO];
 }
@@ -156,15 +140,13 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
 
     if(0 == searchText.length){
-        DBManager *db = [DBManager sharedInstance];
-        db.memosData = [db Memo];
+        self.memosData = [self.dm Memo];
         [self.tableView reloadData];
     }else{
-        DBManager *db = [DBManager sharedInstance];
-        [db searchMemo:searchText];
-        for (NSInteger i = 0; i < [db.memosData count]; i++) {
+        [self.dm searchMemo:searchText];
+        for (NSInteger i = 0; i < [self.memosData count]; i++) {
             // 配列から要素を取得する
-            Memo *memo = [db.memosData objectAtIndex:i];
+            Memo *memo = [self.memosData objectAtIndex:i];
             NSLog(@"%@", memo.content);
         }
         
@@ -174,22 +156,33 @@
 }
 
 - (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
-    DBManager *db = [DBManager sharedInstance];
-    NSLog(@"called searchBar");
-    db.memosData = [db selectMemos:selectedScope];
+    self.memosData = [self.dm selectMemos:selectedScope];
     [self.tableView reloadData];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    DBManager *db = [DBManager sharedInstance];
-    db.memosData = [db Memo];
+    self.memosData = [self.dm Memo];
     searchBar.text = @"";
     [self.tableView endEditing:YES];
     [self.tableView reloadData];
-    
-    
 }
 
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    if (editing)
+    {
+        self.editButtonItem.title = NSLocalizedString(@"キャンセル", @"キャンセル");
+    }
+    else
+    {
+        self.editButtonItem.title = NSLocalizedString(@"削除", @"削除");
+    }
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"削除";
+}
 
 
 
