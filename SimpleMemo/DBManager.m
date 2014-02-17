@@ -17,7 +17,7 @@
 static id _instance = nil;
 
 + (DBManager *)sharedInstance{
-    NSLog(@"called sharedInstance");
+    LOG(@"called sharedInstance");
 
     @synchronized(self) {
         if (!_instance) {
@@ -34,7 +34,7 @@ static id _instance = nil;
     NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *dir = [paths objectAtIndex:0];
     NSString *dbPath = [dir stringByAppendingPathComponent:@"data.sqlite"];
-    NSLog(@"%@",dir);
+    LOG(@"%@",dir);
     
     BOOL needInitData = NO;
     if(![fm fileExistsAtPath:dbPath]){
@@ -131,7 +131,7 @@ static id _instance = nil;
     [formatter setDateFormat:@"YYYY/MM/dd HH:mm:ss"];
     NSDate* date = [NSDate date];
     NSString* dateStr = [formatter stringFromDate:date];
-    //NSLog(@"Date:%@",dateStr);
+    //LOG(@"Date:%@",dateStr);
     
     if(setId){
         [self.db executeUpdate:@"INSERT INTO memo (id, title, content, created_at, updated_at) VALUES(?, ?, ?, ?, ?)",
@@ -170,7 +170,7 @@ static id _instance = nil;
      dateStr
      ];
     long long lastid = [self.db lastInsertRowId];
-    //NSLog(@"%lld", lastid);
+    //LOG(@"%lld", lastid);
     return (int) lastid;
 }
 
@@ -225,7 +225,7 @@ static id _instance = nil;
     
     @autoreleasepool {
         while ([rs next]) {
-            NSLog(@"called loop");
+            LOG(@"called loop");
             
             Memo *memo = [[Memo alloc] init];
             memo.MemoId = [rs intForColumn:@"id"];
@@ -243,8 +243,8 @@ static id _instance = nil;
 }
 
 - (void)replaceSelectedData:(NSString *)text memoid:(int)id{
-    //NSLog(@"%@",text);
-    //NSLog(@"%d",id);
+    //LOG(@"%@",text);
+    //LOG(@"%d",id);
     
 }
 
@@ -256,16 +256,12 @@ static id _instance = nil;
     [self.db commit];
     [self.db close];
     self.memosData = [self Memo];
-    long size = [self.memosData count];
-    NSLog(@"%ld",size);
-    
-    
     return YES;
     
 }
 
 - (void)deleteDB{
-    if(![self open]) NSLog(@"Can't Open Database");
+    if(![self open]) LOG(@"Can't Open Database");
     [self.db executeUpdate:@"DELETE FROM memo"];
     [self.db close];
     
@@ -281,11 +277,11 @@ static id _instance = nil;
 
 - (NSMutableArray *)selectMemos:(NSInteger)selectedID{
     if(![self open]) return nil;
-    NSLog(@"in selectMemos");
+    LOG(@"in selectMemos");
     NSMutableArray *memos = [[NSMutableArray alloc] initWithCapacity:0];
     [self.db setTraceExecution:YES];
     NSString *match_type;
-    NSLog(@"%ld",selectedID);
+    LOG(@"%ld",selectedID);
     if(selectedID == 1){
         match_type = @"url";
     }else if (selectedID == 2){
@@ -295,12 +291,12 @@ static id _instance = nil;
     }else {
         match_type = @"";
     }
-    NSLog(@"%@", match_type);
+    LOG(@"%@", match_type);
     NSString *srcmatch;
     srcmatch = @"%";
     srcmatch = [srcmatch stringByAppendingString:match_type];
     srcmatch = [srcmatch stringByAppendingString:@"%"];
-    NSLog(@"%@",srcmatch);
+    LOG(@"%@",srcmatch);
     
     FMResultSet *rs = [self.db executeQuery:@"\
                        SELECT id, title, content, created_at, updated_at, match_type \
@@ -310,7 +306,7 @@ static id _instance = nil;
                        srcmatch];
     @autoreleasepool {
         while ([rs next]) {
-            NSLog(@"called loop");
+            LOG(@"called loop");
             
             Memo *memo = [[Memo alloc] init];
             memo.MemoId = [rs intForColumn:@"id"];
@@ -336,7 +332,7 @@ static id _instance = nil;
     [formatter setDateFormat:@"YYYY/MM/dd HH:mm:ss"];
     NSDate* date = [NSDate date];
     NSString* dateStr = [formatter stringFromDate:date];
-    //NSLog(@"%d",MemoID);
+    //LOG(@"%d",MemoID);
     
     NSDataDetector *linkDetector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeDate|NSTextCheckingTypeAddress|
                                     NSTextCheckingTypeLink|
@@ -354,27 +350,19 @@ static id _instance = nil;
     for (NSTextCheckingResult *match in matches) {
         //Linkにマッチしたら
         if ([match resultType] == NSTextCheckingTypeLink) {
-            NSURL *url = [match URL];
-            NSLog(@"url:%@",[url description]);
             [match_types addObject:@("url")];
         } else if ([match resultType] == NSTextCheckingTypePhoneNumber) {
-            NSString *phoneNumber = [match phoneNumber];
-            NSLog(@"tel:%@",phoneNumber);
             [match_types addObject:@("tel")];
         } else if([match resultType] == NSTextCheckingTypeDate){
-            NSDate *date = [match date];
-            NSLog(@"date:%@",date);
             [match_types addObject:@("date")];
-        } else if ([match resultType] == NSTextCheckingTypeAddress){
-            NSDictionary *phoneNumber = [match addressComponents];
-            NSLog(@"addressComponents  %@",phoneNumber);
+        } else if ([match resultType] == NSTextCheckingTypeAddress){;
         }
     }
     NSString *str = [match_types componentsJoinedByString:@","];
    
-    NSLog(@"content:%@",content);
-    NSLog(@"date:%@",dateStr);
-    NSLog(@"match_types:%@",str);
+    LOG(@"content:%@",content);
+    LOG(@"date:%@",dateStr);
+    LOG(@"match_types:%@",str);
 
     [self.db executeUpdate:@"UPDATE memo SET content = ?, match_type = ?, updated_at = ? WHERE id = ?",
      content,

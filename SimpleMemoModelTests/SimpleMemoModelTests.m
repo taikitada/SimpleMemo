@@ -45,20 +45,20 @@
     NSArray *memo = [db Memo];
     int count = 0;
     for (Memo *e in memo) {
-		NSLog(@">> %d", e.MemoId);
+		LOG(@">> %d", e.MemoId);
         if(count==0){
         XCTAssertEqualObjects(e.title, @"タイトル", @"check set title");
         }else{
         XCTAssertEqualObjects(e.title, @"タイトル1", @"check set title");
         }
-        NSLog(@">> %@", e.title);
-        NSLog(@">> %@", e.created_at);
-        NSLog(@">> %@", e.updated_at);
+        LOG(@">> %@", e.title);
+        LOG(@">> %@", e.created_at);
+        LOG(@">> %@", e.updated_at);
         count++;
     }
     NSMutableArray *titles = [db MemoTitles];
     for (NSString *title in titles) {
-        NSLog(@"%@",title);
+        LOG(@"%@",title);
     };
     //XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
 }

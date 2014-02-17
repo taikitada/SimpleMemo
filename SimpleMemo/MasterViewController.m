@@ -47,8 +47,6 @@
     searchBar.placeholder = @"検索語句を入力";
     searchBar.keyboardType = UIKeyboardTypeDefault;
     searchBar.tintColor = [UIColor colorWithRed:0.855 green:0.647 blue:0.125 alpha:1.0];
-
-    
     searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"全て", @"URL,Email", @"電話番号", @"日付", nil];
     searchBar.showsScopeBar = YES;
     self.searchDisplayController.searchBar.barTintColor = [UIColor whiteColor];
@@ -81,9 +79,12 @@
 }
 - (void)viewDidAppear:(BOOL)animated{
     self.memosData = [self.dm Memo];
+    self.searchDisplayController.searchBar.selectedScopeButtonIndex = 0;
+    self.searchDisplayController.searchBar.text = @"";
     [self.tableView reloadData];
     
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -96,7 +97,7 @@
     }
     
     Memo *memo = (Memo *)[self.memosData objectAtIndex:indexPath.row];
-    //NSLog(@"%@",memo.content);
+    //LOG(@"%@",memo.content);
     
     cell.textLabel.text = memo.content;
     cell.detailTextLabel.textAlignment = NSTextAlignmentRight;
@@ -115,7 +116,7 @@
 {
     NSInteger size;
     size = [self.memosData count];
-    NSLog(@"%ld",size);
+    LOG(@"%ld",size);
     return size;
 }
 
@@ -131,7 +132,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%ld",indexPath.row);
+    self.searchDisplayController.searchBar.selectedScopeButtonIndex = 0;
+    LOG(@"%ld",indexPath.row);
     Memo *memo = (Memo *)[self.memosData objectAtIndex:indexPath.row];
     ContentViewController *c = [[ContentViewController alloc] initWithMemo:memo];
     [self.navigationController pushViewController:c animated:NO];
@@ -144,12 +146,7 @@
         [self.tableView reloadData];
     }else{
         [self.dm searchMemo:searchText];
-        for (NSInteger i = 0; i < [self.memosData count]; i++) {
-            // 配列から要素を取得する
-            Memo *memo = [self.memosData objectAtIndex:i];
-            NSLog(@"%@", memo.content);
-        }
-        
+        self.memosData = self.dm.memosData;
     }
     [self.tableView reloadData];
     
@@ -157,6 +154,8 @@
 
 - (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
     self.memosData = [self.dm selectMemos:selectedScope];
+    searchBar.text = @"";
+    [self.tableView endEditing:YES];
     [self.tableView reloadData];
 }
 

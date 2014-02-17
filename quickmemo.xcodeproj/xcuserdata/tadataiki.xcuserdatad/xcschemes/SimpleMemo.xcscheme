@@ -17,7 +17,7 @@
                BlueprintIdentifier = "168D61DD1892A98100C32C53"
                BuildableName = "SimpleMemo.app"
                BlueprintName = "SimpleMemo"
-               ReferencedContainer = "container:SimpleMemo.xcodeproj">
+               ReferencedContainer = "container:quickmemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "168D62011892A98100C32C53"
                BuildableName = "SimpleMemoTests.xctest"
                BlueprintName = "SimpleMemoTests"
-               ReferencedContainer = "container:SimpleMemo.xcodeproj">
+               ReferencedContainer = "container:quickmemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "74B39BA1189E405A00AFC789"
                BuildableName = "SimpleMemoModelTests.xctest"
                BlueprintName = "SimpleMemoModelTests"
-               ReferencedContainer = "container:SimpleMemo.xcodeproj">
+               ReferencedContainer = "container:quickmemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,7 +55,7 @@
             BlueprintIdentifier = "168D61DD1892A98100C32C53"
             BuildableName = "SimpleMemo.app"
             BlueprintName = "SimpleMemo"
-            ReferencedContainer = "container:SimpleMemo.xcodeproj">
+            ReferencedContainer = "container:quickmemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -64,7 +64,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
@@ -74,7 +74,7 @@
             BlueprintIdentifier = "168D61DD1892A98100C32C53"
             BuildableName = "SimpleMemo.app"
             BlueprintName = "SimpleMemo"
-            ReferencedContainer = "container:SimpleMemo.xcodeproj">
+            ReferencedContainer = "container:quickmemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -92,7 +92,7 @@
             BlueprintIdentifier = "168D61DD1892A98100C32C53"
             BuildableName = "SimpleMemo.app"
             BlueprintName = "SimpleMemo"
-            ReferencedContainer = "container:SimpleMemo.xcodeproj">
+            ReferencedContainer = "container:quickmemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
@@ -101,6 +101,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "QuickMemo"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

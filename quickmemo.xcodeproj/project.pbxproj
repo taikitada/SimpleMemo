@@ -12,7 +12,6 @@
 		168D61E21892A98100C32C53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D61E11892A98100C32C53 /* Foundation.framework */; };
 		168D61E41892A98100C32C53 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D61E31892A98100C32C53 /* CoreGraphics.framework */; };
 		168D61E61892A98100C32C53 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D61E51892A98100C32C53 /* UIKit.framework */; };
-		168D61EC1892A98100C32C53 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 168D61EA1892A98100C32C53 /* InfoPlist.strings */; };
 		168D61EE1892A98100C32C53 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 168D61ED1892A98100C32C53 /* main.m */; };
 		168D61F21892A98100C32C53 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 168D61F11892A98100C32C53 /* AppDelegate.m */; };
 		168D61FB1892A98100C32C53 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 168D61FA1892A98100C32C53 /* ViewController.m */; };
@@ -30,7 +29,6 @@
 		168D622E1892AFE900C32C53 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 168D62291892AFE900C32C53 /* FMResultSet.m */; };
 		168D62311892C23000C32C53 /* Memo.m in Sources */ = {isa = PBXBuildFile; fileRef = 168D62301892C23000C32C53 /* Memo.m */; };
 		168D62341893852200C32C53 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D62331893852200C32C53 /* libsqlite3.dylib */; };
-		7435DE5E18ABE456007B1BC8 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7435DE5D18ABE456007B1BC8 /* Icon.png */; };
 		74B39BA3189E405A00AFC789 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D62031892A98100C32C53 /* XCTest.framework */; };
 		74B39BA4189E405A00AFC789 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D61E11892A98100C32C53 /* Foundation.framework */; };
 		74B39BA5189E405A00AFC789 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D61E51892A98100C32C53 /* UIKit.framework */; };
@@ -38,6 +36,9 @@
 		74B39BAD189E405A00AFC789 /* SimpleMemoModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B39BAC189E405A00AFC789 /* SimpleMemoModelTests.m */; };
 		74B39BB6189FD58900AFC789 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B39BB5189FD58900AFC789 /* MasterViewController.m */; };
 		74B39BBF189FE3E500AFC789 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B39BBE189FE3E500AFC789 /* ContentViewController.m */; };
+		74BCBF5A18AFBADB00FAB930 /* icon2.3_152.png in Resources */ = {isa = PBXBuildFile; fileRef = 74BCBF5918AFBADB00FAB930 /* icon2.3_152.png */; };
+		74BCBF5B18AFBB3000FAB930 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 168D620C1892A98100C32C53 /* InfoPlist.strings */; };
+		74BCBF5D18AFBC4B00FAB930 /* icon2.0.png in Resources */ = {isa = PBXBuildFile; fileRef = 74BCBF5C18AFBC4B00FAB930 /* icon2.0.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +66,6 @@
 		168D61E31892A98100C32C53 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		168D61E51892A98100C32C53 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		168D61E91892A98100C32C53 /* SimpleMemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SimpleMemo-Info.plist"; sourceTree = "<group>"; };
-		168D61EB1892A98100C32C53 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		168D61ED1892A98100C32C53 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		168D61EF1892A98100C32C53 /* SimpleMemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleMemo-Prefix.pch"; sourceTree = "<group>"; };
 		168D61F01892A98100C32C53 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -76,7 +76,6 @@
 		168D62021892A98100C32C53 /* SimpleMemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleMemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		168D62031892A98100C32C53 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		168D620B1892A98100C32C53 /* SimpleMemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SimpleMemoTests-Info.plist"; sourceTree = "<group>"; };
-		168D620D1892A98100C32C53 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		168D620F1892A98100C32C53 /* SimpleMemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleMemoTests.m; sourceTree = "<group>"; };
 		168D62191892ADF000C32C53 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		168D621A1892ADF000C32C53 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
@@ -100,13 +99,14 @@
 		746DB69918A7590C00AD2B95 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		74B39BA2189E405A00AFC789 /* SimpleMemoModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleMemoModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B39BA8189E405A00AFC789 /* SimpleMemoModelTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SimpleMemoModelTests-Info.plist"; sourceTree = "<group>"; };
-		74B39BAA189E405A00AFC789 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		74B39BAC189E405A00AFC789 /* SimpleMemoModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleMemoModelTests.m; sourceTree = "<group>"; };
 		74B39BAE189E405A00AFC789 /* SimpleMemoModelTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleMemoModelTests-Prefix.pch"; sourceTree = "<group>"; };
 		74B39BB4189FD58900AFC789 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		74B39BB5189FD58900AFC789 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		74B39BBD189FE3E500AFC789 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
 		74B39BBE189FE3E500AFC789 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
+		74BCBF5918AFBADB00FAB930 /* icon2.3_152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.3_152.png; sourceTree = "<group>"; };
+		74BCBF5C18AFBC4B00FAB930 /* icon2.0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.0.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +147,9 @@
 		168D61D51892A98100C32C53 = {
 			isa = PBXGroup;
 			children = (
+				74BCBF5C18AFBC4B00FAB930 /* icon2.0.png */,
+				168D61EA1892A98100C32C53 /* InfoPlist.strings */,
+				74BCBF5918AFBADB00FAB930 /* icon2.3_152.png */,
 				161B437218AA43AE00EFDA83 /* Main_iPhone.storyboard */,
 				161B437018AA406600EFDA83 /* data.sqlite */,
 				74B39C0B18A061E100AFC789 /* Images */,
@@ -207,7 +210,6 @@
 			isa = PBXGroup;
 			children = (
 				168D61E91892A98100C32C53 /* SimpleMemo-Info.plist */,
-				168D61EA1892A98100C32C53 /* InfoPlist.strings */,
 				168D61ED1892A98100C32C53 /* main.m */,
 				168D61EF1892A98100C32C53 /* SimpleMemo-Prefix.pch */,
 			);
@@ -360,7 +362,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 168D61D91892A98100C32C53 /* Build configuration list for PBXProject "SimpleMemo" */;
+			buildConfigurationList = 168D61D91892A98100C32C53 /* Build configuration list for PBXProject "quickmemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -386,11 +388,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74BCBF5D18AFBC4B00FAB930 /* icon2.0.png in Resources */,
+				74BCBF5B18AFBB3000FAB930 /* InfoPlist.strings in Resources */,
+				74BCBF5A18AFBADB00FAB930 /* icon2.3_152.png in Resources */,
 				161B437118AA406600EFDA83 /* data.sqlite in Resources */,
 				161B437318AA43AE00EFDA83 /* Main_iPhone.storyboard in Resources */,
-				7435DE5E18ABE456007B1BC8 /* Icon.png in Resources */,
 				168D61FD1892A98100C32C53 /* Images.xcassets in Resources */,
-				168D61EC1892A98100C32C53 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,16 +470,15 @@
 		168D61EA1892A98100C32C53 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				168D61EB1892A98100C32C53 /* en */,
 				746DB69718A7590C00AD2B95 /* ja */,
 			);
 			name = InfoPlist.strings;
+			path = SimpleMemo;
 			sourceTree = "<group>";
 		};
 		168D620C1892A98100C32C53 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				168D620D1892A98100C32C53 /* en */,
 				746DB69818A7590C00AD2B95 /* ja */,
 			);
 			name = InfoPlist.strings;
@@ -485,7 +487,6 @@
 		74B39BA9189E405A00AFC789 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				74B39BAA189E405A00AFC789 /* en */,
 				746DB69918A7590C00AD2B95 /* ja */,
 			);
 			name = InfoPlist.strings;
@@ -567,6 +568,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "5994DE9A-BB2C-44B9-A493-28744EFE245A";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -579,13 +581,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: TAIKI TADA (382KZCETTH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimpleMemo/SimpleMemo-Prefix.pch";
 				INFOPLIST_FILE = "SimpleMemo/SimpleMemo-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6BEED02A-6101-433B-A7C3-E67A0D3BE762";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -595,13 +597,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: TAIKI TADA (382KZCETTH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimpleMemo/SimpleMemo-Prefix.pch";
 				INFOPLIST_FILE = "SimpleMemo/SimpleMemo-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6BEED02A-6101-433B-A7C3-E67A0D3BE762";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -693,7 +695,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		168D61D91892A98100C32C53 /* Build configuration list for PBXProject "SimpleMemo" */ = {
+		168D61D91892A98100C32C53 /* Build configuration list for PBXProject "quickmemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				168D62111892A98100C32C53 /* Debug */,

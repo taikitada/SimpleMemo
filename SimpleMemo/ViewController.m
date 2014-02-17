@@ -29,10 +29,10 @@
     
     
     for (Memo *e in memo) {
-		NSLog(@">> %d", e.MemoId);
-        NSLog(@">> %@", e.title);
-        NSLog(@">> %@", e.created_at);
-        NSLog(@">> %@", e.updated_at);
+		LOG(@">> %d", e.MemoId);
+        LOG(@">> %@", e.title);
+        LOG(@">> %@", e.created_at);
+        LOG(@">> %@", e.updated_at);
 	}
     
     

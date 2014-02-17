@@ -5,10 +5,10 @@
 #undef DB_TRACE_ON
 
 #ifdef LOGGER
-# define LOG_LIFECYCLE       NSLog(@"%s", __PRETTY_FUNCTION__)
-# define LOG_METHOD          NSLog(@"%s", __PRETTY_FUNCTION__)
-# define LOG_METHOD_MSG(...) NSLog(@"%@", [NSString stringWithFormat:@"%s %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__]])
-# define LOG(...)            NSLog(@"%@", [NSString stringWithFormat:@"%s %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__]])
+# define LOG_LIFECYCLE       LOG(@"%s", __PRETTY_FUNCTION__)
+# define LOG_METHOD          LOG(@"%s", __PRETTY_FUNCTION__)
+# define LOG_METHOD_MSG(...) LOG(@"%@", [NSString stringWithFormat:@"%s %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__]])
+# define LOG(...)            LOG(@"%@", [NSString stringWithFormat:@"%s %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__]])
 
 #else
 # define LOG_LIFECYCLE
