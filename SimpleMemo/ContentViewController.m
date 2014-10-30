@@ -13,6 +13,7 @@
 {
     UITextView *tv;
     UINavigationController *navigationController;
+    UIScrollView *sv;
 }
 
 
@@ -26,19 +27,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    sv = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    sv.backgroundColor = [UIColor whiteColor];
+    [sv flashScrollIndicators];
+    [sv setUserInteractionEnabled:YES];
+    sv.scrollEnabled = YES;
+    tv = [[UITextView alloc] init];
+    tv.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    tv.frame = CGRectMake(5,5, self.view.frame.size.width, self.view.frame.size.height - 285);
+    LOG(@"%d",self.memo.MemoId);
+    tv.text = self.memo.content;
+    [tv becomeFirstResponder];
+    tv.scrollEnabled = YES;
+    [sv addSubview:tv];
+    
+    [self.view addSubview:sv];
+
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"一覧へ戻る" style:UIBarButtonItemStyleDone target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = backBarButtonItem;
     self.navigationItem.rightBarButtonItem = nil;
 
-    tv = [[UITextView alloc] init];
-    tv.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    tv.frame = self.view.frame;
-    LOG(@"%d",self.memo.MemoId);
-    tv.text = self.memo.content;
-    [tv becomeFirstResponder];
     
-    [self.view addSubview:tv];
+
 	// Do any additional setup after loading the view.
 }
 
@@ -65,12 +76,8 @@
         }else{
             [db updateMemo:tv.text memoid:self.memo.MemoId];
         }
-        
     }
 }
-
-
-
 
 
 

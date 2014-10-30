@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EAE07D92-0D47-4207-A6C2-C39C74692CCB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>quickmemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>217E0D328E01B45F6F31ACEC2DA586F964D0A6F2</key>
+		<string>github.com:TaikiTada/SimpleMemo.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>quickmemo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>217E0D328E01B45F6F31ACEC2DA586F964D0A6F2</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:TaikiTada/SimpleMemo.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>217E0D328E01B45F6F31ACEC2DA586F964D0A6F2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>217E0D328E01B45F6F31ACEC2DA586F964D0A6F2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SimpleMemo</string>
+		</dict>
+	</array>
+</dict>
+</plist>

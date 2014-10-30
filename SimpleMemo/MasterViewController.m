@@ -35,7 +35,7 @@
                                    initWithTitle:@"新規" style:UIBarButtonItemStyleBordered target:self action:@selector(addButton_down:)];
     self.navigationItem.leftBarButtonItem = addButton;
     
-    CGRect frame = CGRectMake(0, 0, 140.0, 20.0);
+    CGRect frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 20.0);
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:frame];
     UISearchDisplayController *searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
     searchBar.delegate = self;
@@ -141,6 +141,7 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
 
+
     if(0 == searchText.length){
         self.memosData = [self.dm Memo];
         [self.tableView reloadData];
@@ -175,6 +176,7 @@
     }
     else
     {
+
         self.editButtonItem.title = NSLocalizedString(@"削除", @"削除");
     }
 }

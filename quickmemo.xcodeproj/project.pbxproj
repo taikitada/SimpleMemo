@@ -14,7 +14,6 @@
 		168D61E61892A98100C32C53 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D61E51892A98100C32C53 /* UIKit.framework */; };
 		168D61EE1892A98100C32C53 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 168D61ED1892A98100C32C53 /* main.m */; };
 		168D61F21892A98100C32C53 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 168D61F11892A98100C32C53 /* AppDelegate.m */; };
-		168D61FB1892A98100C32C53 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 168D61FA1892A98100C32C53 /* ViewController.m */; };
 		168D61FD1892A98100C32C53 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 168D61FC1892A98100C32C53 /* Images.xcassets */; };
 		168D62041892A98100C32C53 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D62031892A98100C32C53 /* XCTest.framework */; };
 		168D62051892A98100C32C53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D61E11892A98100C32C53 /* Foundation.framework */; };
@@ -29,6 +28,7 @@
 		168D622E1892AFE900C32C53 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 168D62291892AFE900C32C53 /* FMResultSet.m */; };
 		168D62311892C23000C32C53 /* Memo.m in Sources */ = {isa = PBXBuildFile; fileRef = 168D62301892C23000C32C53 /* Memo.m */; };
 		168D62341893852200C32C53 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D62331893852200C32C53 /* libsqlite3.dylib */; };
+		74321BC419A2D83A005197AE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74321BC319A2D83A005197AE /* SystemConfiguration.framework */; };
 		74B39BA3189E405A00AFC789 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D62031892A98100C32C53 /* XCTest.framework */; };
 		74B39BA4189E405A00AFC789 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D61E11892A98100C32C53 /* Foundation.framework */; };
 		74B39BA5189E405A00AFC789 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168D61E51892A98100C32C53 /* UIKit.framework */; };
@@ -70,8 +70,6 @@
 		168D61EF1892A98100C32C53 /* SimpleMemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleMemo-Prefix.pch"; sourceTree = "<group>"; };
 		168D61F01892A98100C32C53 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		168D61F11892A98100C32C53 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		168D61F91892A98100C32C53 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		168D61FA1892A98100C32C53 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		168D61FC1892A98100C32C53 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		168D62021892A98100C32C53 /* SimpleMemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleMemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		168D62031892A98100C32C53 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -93,6 +91,7 @@
 		168D622F1892C23000C32C53 /* Memo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Memo.h; sourceTree = "<group>"; };
 		168D62301892C23000C32C53 /* Memo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Memo.m; sourceTree = "<group>"; };
 		168D62331893852200C32C53 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		74321BC319A2D83A005197AE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7435DE5D18ABE456007B1BC8 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		746DB69718A7590C00AD2B95 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		746DB69818A7590C00AD2B95 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -114,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74321BC419A2D83A005197AE /* SystemConfiguration.framework in Frameworks */,
 				168D62341893852200C32C53 /* libsqlite3.dylib in Frameworks */,
 				168D61E41892A98100C32C53 /* CoreGraphics.framework in Frameworks */,
 				168D61E61892A98100C32C53 /* UIKit.framework in Frameworks */,
@@ -174,6 +174,7 @@
 		168D61E01892A98100C32C53 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				74321BC319A2D83A005197AE /* SystemConfiguration.framework */,
 				168D62331893852200C32C53 /* libsqlite3.dylib */,
 				168D621C1892AED400C32C53 /* libsqlite3.0.dylib */,
 				168D61E11892A98100C32C53 /* Foundation.framework */,
@@ -192,8 +193,6 @@
 				168D61F11892A98100C32C53 /* AppDelegate.m */,
 				74B39BBD189FE3E500AFC789 /* ContentViewController.h */,
 				74B39BBE189FE3E500AFC789 /* ContentViewController.m */,
-				168D61F91892A98100C32C53 /* ViewController.h */,
-				168D61FA1892A98100C32C53 /* ViewController.m */,
 				74B39BB4189FD58900AFC789 /* MasterViewController.h */,
 				74B39BB5189FD58900AFC789 /* MasterViewController.m */,
 				168D62191892ADF000C32C53 /* DBManager.h */,
@@ -348,7 +347,7 @@
 		168D61D61892A98100C32C53 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Taiki;
 				TargetAttributes = {
 					168D61DD1892A98100C32C53 = {
@@ -420,7 +419,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				168D61FB1892A98100C32C53 /* ViewController.m in Sources */,
 				168D622D1892AFE900C32C53 /* FMDatabaseQueue.m in Sources */,
 				168D61F21892A98100C32C53 /* AppDelegate.m in Sources */,
 				74B39BBF189FE3E500AFC789 /* ContentViewController.m in Sources */,
@@ -499,7 +497,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -513,7 +510,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: TAIKI TADA (FPNK5PSY9U)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: TAIKI TADA (FPNK5PSY9U)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: TAIKI TADA (FPNK5PSY9U)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -529,13 +526,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "5994DE9A-BB2C-44B9-A493-28744EFE245A";
-				"PROVISIONING_PROFILE[sdk=*]" = "5994DE9A-BB2C-44B9-A493-28744EFE245A";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				ONLY_ACTIVE_ARCH = NO;
+				PROVISIONING_PROFILE = "5A0D4283-BAE0-4CCE-AA58-ECF493946F46";
+				"PROVISIONING_PROFILE[sdk=*]" = "5077D0FF-7D0C-46A0-BD11-0D8956C8DAB7";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 arm64";
 			};
 			name = Debug;
 		};
@@ -543,7 +541,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -567,12 +564,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "5994DE9A-BB2C-44B9-A493-28744EFE245A";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				ONLY_ACTIVE_ARCH = NO;
+				PROVISIONING_PROFILE = "5A0D4283-BAE0-4CCE-AA58-ECF493946F46";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 arm64";
 			};
 			name = Release;
 		};
@@ -581,13 +579,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: TAIKI TADA (382KZCETTH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"/Users/tadataiki/mobile-app-dmp-sdk/ios/FOTracking/Framework",
+					"/Users/tadataiki/Downloads/fout_ios_dmp_sdk-master/FOTracking/Framework",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimpleMemo/SimpleMemo-Prefix.pch";
 				INFOPLIST_FILE = "SimpleMemo/SimpleMemo-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6BEED02A-6101-433B-A7C3-E67A0D3BE762";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -597,13 +602,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: TAIKI TADA (382KZCETTH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"/Users/tadataiki/mobile-app-dmp-sdk/ios/FOTracking/Framework",
+					"/Users/tadataiki/Downloads/fout_ios_dmp_sdk-master/FOTracking/Framework",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimpleMemo/SimpleMemo-Prefix.pch";
 				INFOPLIST_FILE = "SimpleMemo/SimpleMemo-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6BEED02A-6101-433B-A7C3-E67A0D3BE762";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -611,7 +623,6 @@
 		168D62171892A98100C32C53 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SimpleMemo.app/SimpleMemo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -634,7 +645,6 @@
 		168D62181892A98100C32C53 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SimpleMemo.app/SimpleMemo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -653,7 +663,6 @@
 		74B39BB1189E405A00AFC789 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SimpleMemo.app/SimpleMemo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -676,7 +685,6 @@
 		74B39BB2189E405A00AFC789 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SimpleMemo.app/SimpleMemo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
